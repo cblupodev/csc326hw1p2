@@ -36,6 +36,36 @@ http://checkbox.io/studies.html
 * If a status of a study is open, you can click on a "Participate" button.
 * You can enter text into this study (don't have to submit): http://checkbox.io/studies/?id=569e667f12101f8a12000001
 
+You'll have to adjust the driver used in order to properly render javascript:
+
+```
+	private static WebDriver driver;
+	
+	@BeforeClass
+	public static void setUp() throws Exception 
+	{
+		//driver = new HtmlUnitDriver(true);
+		//System.setProperty("webdriver.chrome.driver", "/Users/gameweld/classes/326/HW1.P2/hw1p2/chromedriver");
+		ChromeDriverManager.getInstance().setup();
+		driver = new ChromeDriver();
+	}
+	
+	@AfterClass
+	public static void  tearDown() throws Exception
+	{
+		driver.close();
+	}
+```
+
+Add the following maven dependency:
+```
+	<dependency>
+  		<groupId>io.github.bonigarcia</groupId>
+  		<artifactId>webdrivermanager</artifactId>
+  		<version>1.3.1</version>
+	</dependency>    
+```
+
 ## Part 3 - iTrust (20 points)
 
 You simply must get all iTrust unit tests passing.
